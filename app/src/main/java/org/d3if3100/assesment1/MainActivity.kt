@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import org.d3if3100.assesment1.databinding.ActivityMainBinding
 import java.text.NumberFormat
@@ -15,14 +14,24 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private var value = ""
+    private val items = arrayOf(
+        "Rupiah to USD",
+        "Rupiah to Yen",
+        "Rupiah to Euro",
+        "USD to Rupiah",
+        "USD to Yen",
+        "USD to Euro",
+        "Yen to Rupiah",
+        "Yen to USD",
+        "Yen to Euro"
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val items = arrayOf("Rupiah to USD", "Rupiah to Yen","Rupiah to Euro", "USD to Rupiah", "USD to Yen", "USD to Euro", "Yen to Rupiah", "Yen to USD", "Yen to Euro")
-        val dropdown: AutoCompleteTextView = binding.materialSpinner
+        val dropdown: ExposedDropdownMenu = binding.materialSpinner
         val adapter = ArrayAdapter(this, R.layout.list_items, items)
         dropdown.setAdapter(adapter)
 
@@ -65,7 +74,7 @@ class MainActivity : AppCompatActivity() {
                 formatCurrency = NumberFormat.getCurrencyInstance(Locale.US)
             }
 
-            "Rupiah to Yen" ->{
+            "Rupiah to Yen" -> {
                 if (nominal.toDouble() < 100) {
                     Toast.makeText(this, R.string.min_rupiah, Toast.LENGTH_LONG).show()
                     return

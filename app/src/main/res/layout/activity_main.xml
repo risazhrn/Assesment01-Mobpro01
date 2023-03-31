@@ -50,7 +50,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvJudul">
 
-            <AutoCompleteTextView
+            <org.d3if3100.assesment1.ExposedDropdownMenu
                 android:id="@+id/material_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
