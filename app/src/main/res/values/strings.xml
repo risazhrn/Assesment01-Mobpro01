@@ -1,13 +1,16 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">Money Converter</string>
     <string name="judul">Money Converter</string>
     <string name="nominal">Nominal</string>
     <string name="convert">Convert</string>
     <string name="convert_null">Nominal Convert harus diisi</string>
     <string name="hasil_convert">%1$s</string>
-    <string name="min_rupiah">Minimal nominal Rp.100,00</string>
+    <string name="min_rupiah">Minimal nominal Rp100,00</string>
     <string name="min_dollar">Minimal nominal $1</string>
+    <string name="min_yen">Minimal nominal ¥100 </string>
     <string name="convert_type_null">Pilih konversi mata uang</string>
     <string name="reset">Reset</string>
     <string name="select_currency">Select currency conversion</string>
+    <string name="empty"></string>
+    <string name="gambar">Gambar konversi mata uang</string>
 </resources>

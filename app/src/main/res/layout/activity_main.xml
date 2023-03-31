@@ -10,30 +10,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="210dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/gambar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/currency_pana" />
+
         <TextView
             android:id="@+id/tvJudul"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:text="@string/judul"
+            android:textColor="@color/green_700"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@color/green"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:id="@+id/spinner"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="32dp"
+            android:background="@color/white"
             android:hint="@string/select_currency"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,19 +56,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="none"
-                android:textColorHint="@color/black"
-                android:layout_weight="1"
-                tools:ignore="LabelFor,DuplicateSpeakableTextCheck,VisualLintTextFieldSize,TextContrastCheck" />
+                android:textColorHint="#1B5E20"
+                tools:ignore="LabelFor,TextContrastCheck,VisualLintTextFieldSize" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvNominal"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
+            app:boxStrokeColor="@color/green_900"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner">
@@ -67,35 +78,55 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/nominal"
                 android:inputType="numberDecimal"
-                android:textColorHint="@color/black"
-                android:layout_weight="1"
-                />
+                android:textColorHint="#757575"
+                tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnConvert"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/green_700"
             android:text="@string/convert"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNominal" />
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/btnReset"
+            app:layout_constraintEnd_toEndOf="@+id/tvNominal"
+            app:layout_constraintStart_toEndOf="@+id/btnReset"
+            app:layout_constraintTop_toTopOf="@+id/btnReset"
+            app:strokeColor="@color/green_700" />
+
+        <Button
+            android:id="@+id/btnReset"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/reset"
+            android:textColor="@color/green_900"
+            app:backgroundTint="@android:color/transparent"
+            app:cornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnConvert"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvNominal"
+            app:layout_constraintTop_toBottomOf="@+id/tvNominal"
+            app:strokeColor="@color/green_700"
+            app:strokeWidth="1dp" />
 
         <TextView
             android:id="@+id/resultConvert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnConvert" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

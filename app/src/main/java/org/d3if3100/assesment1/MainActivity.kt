@@ -21,24 +21,24 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val items = arrayOf("Rupiah to USD", "USD to Rupiah")
+        val items = arrayOf("Rupiah to USD", "Rupiah to Yen","Rupiah to Euro", "USD to Rupiah", "USD to Yen", "USD to Euro", "Yen to Rupiah", "Yen to USD", "Yen to Euro")
         val dropdown: AutoCompleteTextView = binding.materialSpinner
         val adapter = ArrayAdapter(this, R.layout.list_items, items)
         dropdown.setAdapter(adapter)
 
-        dropdown.setOnItemClickListener { _, _, position, _ ->
-            val selectedValue = items[position]
-
-            value = if (selectedValue == "Rupiah to USD") {
-                "Rupiah to USD"
-            } else {
-                "USD to Rupiah"
-            }
-        }
+        dropdown.setOnItemClickListener { _, _, position, _ -> value = items[position] }
 
         binding.btnConvert.setOnClickListener {
             convertMoney()
         }
+        binding.btnReset.setOnClickListener {
+            reset()
+        }
+    }
+
+    private fun reset() {
+        binding.nominal.setText(R.string.empty)
+        binding.resultConvert.setText(R.string.empty)
     }
 
     private fun convertMoney() {
@@ -62,7 +62,24 @@ class MainActivity : AppCompatActivity() {
                     return
                 }
                 hasil = nominal.toDouble() / 15_060
-                formatCurrency = NumberFormat.getCurrencyInstance(Locale("en", "US"))
+                formatCurrency = NumberFormat.getCurrencyInstance(Locale.US)
+            }
+
+            "Rupiah to Yen" ->{
+                if (nominal.toDouble() < 100) {
+                    Toast.makeText(this, R.string.min_rupiah, Toast.LENGTH_LONG).show()
+                    return
+                }
+                hasil = nominal.toDouble() / 11_304
+                formatCurrency = NumberFormat.getCurrencyInstance(Locale.JAPAN)
+            }
+            "Rupiah to Euro" -> {
+                if (nominal.toDouble() < 100) {
+                    Toast.makeText(this, R.string.min_rupiah, Toast.LENGTH_LONG).show()
+                    return
+                }
+                hasil = nominal.toDouble() / 16_329.20
+                formatCurrency = NumberFormat.getCurrencyInstance(Locale("eu", "EU"))
             }
             "USD to Rupiah" -> {
                 if (nominal.toDouble() < 1) {
@@ -72,6 +89,47 @@ class MainActivity : AppCompatActivity() {
                 hasil = nominal.toDouble() * 15_060
                 formatCurrency = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
             }
+            "USD to Euro" -> {
+                if (nominal.toDouble() < 1) {
+                    Toast.makeText(this, R.string.min_dollar, Toast.LENGTH_LONG).show()
+                    return
+                }
+                hasil = nominal.toDouble() * 0.92
+                formatCurrency = NumberFormat.getCurrencyInstance(Locale("eu", "EU"))
+            }
+            "USD to Yen" -> {
+                if (nominal.toDouble() < 1) {
+                    Toast.makeText(this, R.string.min_dollar, Toast.LENGTH_LONG).show()
+                    return
+                }
+                hasil = nominal.toDouble() * 132.88
+                formatCurrency = NumberFormat.getCurrencyInstance(Locale.JAPAN)
+            }
+            "Yen to Rupiah" -> {
+                if (nominal.toDouble() < 100) {
+                    Toast.makeText(this, R.string.min_yen, Toast.LENGTH_LONG).show()
+                    return
+                }
+                hasil = nominal.toDouble() * 11_304
+                formatCurrency = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
+            }
+            "Yen to USD" -> {
+                if (nominal.toDouble() < 100) {
+                    Toast.makeText(this, R.string.min_yen, Toast.LENGTH_LONG).show()
+                    return
+                }
+                hasil = nominal.toDouble() / 132.88
+                formatCurrency = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
+            }
+            "Yen to Euro" -> {
+                if (nominal.toDouble() < 100) {
+                    Toast.makeText(this, R.string.min_yen, Toast.LENGTH_LONG).show()
+                    return
+                }
+                hasil = nominal.toDouble() * 0.69
+                formatCurrency = NumberFormat.getCurrencyInstance(Locale("eu", "EU"))
+            }
+
             else -> hasil = 0.0
         }
 
