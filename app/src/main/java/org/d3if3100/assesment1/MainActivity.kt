@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, R.string.min_rupiah, Toast.LENGTH_LONG).show()
                     return
                 }
-                hasil = nominal.toDouble() / 11_304
+                hasil = nominal.toDouble() / 11_269.92
                 formatCurrency = NumberFormat.getCurrencyInstance(Locale.JAPAN)
             }
             "Rupiah to Euro" -> {
@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, R.string.min_dollar, Toast.LENGTH_LONG).show()
                     return
                 }
-                hasil = nominal.toDouble() * 132.88
+                hasil = nominal.toDouble() * 132.74
                 formatCurrency = NumberFormat.getCurrencyInstance(Locale.JAPAN)
             }
             "Yen to Rupiah" -> {
@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, R.string.min_yen, Toast.LENGTH_LONG).show()
                     return
                 }
-                hasil = nominal.toDouble() * 11_304
+                hasil = nominal.toDouble() * 112.66
                 formatCurrency = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
             }
             "Yen to USD" -> {
@@ -118,15 +118,15 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, R.string.min_yen, Toast.LENGTH_LONG).show()
                     return
                 }
-                hasil = nominal.toDouble() / 132.88
-                formatCurrency = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
+                hasil = nominal.toDouble() / 132.74
+                formatCurrency = NumberFormat.getCurrencyInstance(Locale("en", "US"))
             }
             "Yen to Euro" -> {
                 if (nominal.toDouble() < 100) {
                     Toast.makeText(this, R.string.min_yen, Toast.LENGTH_LONG).show()
                     return
                 }
-                hasil = nominal.toDouble() * 0.69
+                hasil = nominal.toDouble() / 144.86
                 formatCurrency = NumberFormat.getCurrencyInstance(Locale("eu", "EU"))
             }
 
